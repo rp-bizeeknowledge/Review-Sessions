@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registered Agent Price Increase — Bizee Agent Guide</title>
+<title>Registered Agent Price Increase Bizee Agent Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,7 +66,7 @@
 
   /* SECTION */
   .section { margin-bottom: 28px; }
-  .section-title { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .section-title { font-size: 18px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
   /* COMPETITOR TABLE */
@@ -81,21 +81,23 @@
   .comp-yr { font-size: 11px; color: var(--muted); }
   .comp-badge { display: inline-block; background: var(--green-light); color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 5px; }
 
-  .context-note { font-size: 13px; color: var(--mid); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; line-height: 1.6; }
-  .context-note strong { color: var(--dark); font-weight: 600; }
+  .context-note { display: flex; flex-direction: column; gap: 8px; }
+  .context-note-item { display: flex; align-items: flex-start; gap: 12px; padding: 9px 14px; background: var(--orange-light); border: 1px solid var(--orange-mid); border-radius: var(--radius-sm); font-size: 13px; color: var(--mid); line-height: 1.55; }
+  .context-note-item::before { content: ''; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .context-note-item strong { color: var(--dark); font-weight: 600; }
 
   /* VALUE CARDS */
   .value-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
   @media (max-width: 560px) { .value-grid { grid-template-columns: 1fr; } }
   .value-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-  .value-icon { font-size: 20px; margin-bottom: 8px; }
+  .value-icon { display: inline-flex; justify-content: center; width: 100%; font-size: 40px; margin-bottom: 8px; }
   .value-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
   .value-body { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
 
   /* CALL FLOW STEPS */
   .flow-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-  .flow-step { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
-  .flow-num { width: 24px; height: 24px; background: var(--dark); color: #fff; font-size: 11px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .flow-step { display: flex; gap: 12px; align-items: center; padding: 14px 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .flow-num { width: 30px; height: 30px; background: var(--dark); color: #fff; font-size: 13px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .flow-content h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
   .flow-content p { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
   .flow-content strong { color: var(--dark); font-weight: 600; }
@@ -103,7 +105,7 @@
   /* BRIDGE OFFER */
   .bridge-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
   .bridge-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
-  .bridge-title { font-size: 15px; font-weight: 700; color: var(--dark); }
+  .bridge-title { font-size: 18px; font-weight: 700; color: var(--dark); }
   .bridge-price-pill { background: var(--orange-light); border: 1px solid var(--orange-mid); color: var(--orange); font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
   .bridge-rules { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
   .bridge-rule { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--mid); line-height: 1.55; }
@@ -128,8 +130,8 @@
   .callout-icon { flex-shrink: 0; margin-top: 1px; }
 
   /* AVOID LIST */
-  .avoid-list { display: flex; flex-direction: column; gap: 6px; }
-  .avoid-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mid); padding: 10px 14px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .avoid-list { display: flex; flex-direction: column; gap: 6px; margin-left: 50Px; }
+  .avoid-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mid); padding: 10px 14px; background: var(--red-light); border: 1px solid var(--border); border-radius: var(--radius-sm); }
   .avoid-x { color: var(--red); font-weight: 700; font-size: 15px; flex-shrink: 0; }
 
   /* FOOTER */
@@ -143,9 +145,9 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-label">Agent Reference Guide</div>
+    <div class="hero-label">UPDATE</div>
     <h1>Registered Agent<br><span>Price Increase</span></h1>
-    <div class="hero-sub">Effective May 11, 2026 · Call flow &amp; sales guidance</div>
+    <div class="hero-sub">Effective Date: May 11, 2026 <br>New yearly renewal fee</div>
   </div>
 
   <!-- PRICE CHANGE CALLOUT -->
@@ -161,8 +163,7 @@
     </div>
     <div class="price-divider"></div>
     <div class="price-date">
-      <div class="date-label">Effective date</div>
-      <div class="date-val">May 11, 2026</div>
+
       <div class="date-sub">Applies to renewals, new standalone orders &amp; formation order second-year renewals</div>
     </div>
   </div>
@@ -194,18 +195,19 @@
       </div>
     </div>
     <div class="context-note">
-      At $149/yr, Bizee remains <strong>25–40% below major competitors</strong>. Position this as the best value, not the cheapest. Avoid the words <strong>"cheapest"</strong> or <strong>"lowest"</strong> — they imply poor quality. Even with the increase, we lead on value.
+      <div class="context-note-item">At $149/yr, Bizee remains <strong>25–40% below major competitors.</strong> Even with the increase, we lead on value.</div>
+      <div class="context-note-item">Position this as the best value. Avoid words like <strong>"cheapest"</strong> or <strong>"lowest"</strong> as they imply poor quality.</div>
     </div>
   </div>
 
   <!-- VALUE PILLARS -->
   <div class="section">
-    <div class="section-title">Lead with Value — What RA Actually Does</div>
+    <div class="section-title">Lead with Value: Educate on  What the RA Actually Does</div>
     <div class="value-grid">
       <div class="value-card">
         <div class="value-icon">🔒</div>
         <div class="value-title">Privacy</div>
-        <div class="value-body">Bizee's address appears on public state records — not the customer's home address. Keeps them off data broker databases that scrape state filings.</div>
+        <div class="value-body">Bizee's address appears on public state records, not the customer's home address. Keeps them off data broker databases that scrape state filings.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">🛡️</div>
@@ -222,27 +224,27 @@
 
   <!-- CALL FLOW -->
   <div class="section">
-    <div class="section-title">Call Flow — Pricing Pushback</div>
+    <div class="section-title">Call Flow: Handling Pricing Pushback</div>
     <div class="flow-steps">
       <div class="flow-step">
         <div class="flow-num">1</div>
         <div class="flow-content">
-          <h4>Listen first</h4>
+          <h3>Listen first</h3>
           <p>Use active listening to clearly understand the customer's concern before offering any resolution. <strong>Thank them for being a Bizee customer.</strong> Recognize their concern. Don't rush past it.</p>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">2</div>
         <div class="flow-content">
-          <h4>Acknowledge, then pivot</h4>
-          <p>Open with one sentence: <strong>"We've updated our pricing to reflect better what's covered under your registered agent service."</strong> Then pivot to value. Don't apologize. Don't list reasons. Don't say you held prices low for years.</p>
-        </div>
+          <h3>Acknowledge, then pivot</h3>
+          <p>Open with one sentence: <strong>"We've updated our pricing to reflect better what's covered under your registered agent service."</strong> Then pivot to value. Don't apologize. Don't list reasons. 
+          </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">3</div>
         <div class="flow-content">
-          <h4>Lead with value, not price</h4>
-          <p>Use the moment to walk through what RA actually covers — privacy, protection, and ease. Let the value speak before any numbers come up.</p>
+          <h3>Lead with value, not price</h3>
+          <p>Use the moment to walk through what RA actually covers. Let the value speak before any numbers come up.</p>
         </div>
       </div>
     </div>
@@ -256,18 +258,18 @@
 
   <!-- BRIDGE OFFER -->
   <div class="section">
-    <div class="section-title">Bridge Offer — Last Resort Only</div>
+    <div class="section-title">Bridge Offer</div>
     <div class="bridge-card">
       <div class="bridge-header">
-        <div class="bridge-title">$119 Rate Extension — 1 Additional Year</div>
-        <div class="bridge-price-pill">$119/yr · one-time</div>
+        <div class="bridge-title">$119 Rate Extension 1 Additional Year</div>
       </div>
 
       <div class="trigger-label">Only offer when customer has done one of the following</div>
       <div class="triggers">
         <span class="trigger-pill red">Signaled cancellation intent</span>
-        <span class="trigger-pill red">Threatened BBB / Trustpilot review</span>
         <span class="trigger-pill red">Threatened legal action</span>
+        <span class="trigger-pill red">Threatened BBB / Trustpilot review</span>
+
       </div>
 
       <div class="bridge-rules">
@@ -280,11 +282,12 @@
         <div class="quote-text">"I understand this is a change, and I want to make it easier. I'd like to offer you one more year at your current rate of $119."</div>
       </div>
 
-      <div class="callout callout-warn">
+      
+    </div>
+    <div class="callout callout-warn">
         <span class="callout-icon">⚠</span>
         <span>Do not lead with this offer. It is a retention tool for escalated situations only. Using it prematurely undercuts the value conversation.</span>
       </div>
-    </div>
   </div>
 
   <div class="footer">
