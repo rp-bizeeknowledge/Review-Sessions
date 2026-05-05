@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFB + Annual Report — Bizee Agent Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #E8572A;
+    --orange-light: #FDF1ED;
+    --orange-mid: #F4C4B0;
+    --dark: #1A1A1A;
+    --mid: #4A4A4A;
+    --muted: #888;
+    --border: #E8E4E0;
+    --bg: #F7F5F3;
+    --white: #FFFFFF;
+    --green: #1A7A4A;
+    --green-light: #EAF6EF;
+    --amber: #B45309;
+    --amber-light: #FEF3C7;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    border-radius: 14px;
+    padding: 40px 40px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    background: var(--orange);
+    border-radius: 50%;
+    opacity: .12;
+  }
+  .hero-label {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .card + .card { margin-top: 12px; }
+
+  /* ── CHANGE PILLS ── */
+  .change-list { display: flex; flex-direction: column; gap: 10px; }
+  .change-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--orange-light);
+    border: 1px solid var(--orange-mid);
+    border-radius: var(--radius-sm);
+  }
+  .change-dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .change-item p { font-size: 14px; color: var(--mid); line-height: 1.55; }
+  .change-item strong { color: var(--dark); font-weight: 600; }
+
+  /* ── OPTIONS COMPARISON ── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 560px) { .options-grid { grid-template-columns: 1fr; } }
+
+  .option-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+  }
+  .option-card.featured {
+    border-color: var(--orange);
+    background: var(--orange-light);
+  }
+  .option-badge {
+    position: absolute;
+    top: -11px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .option-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 14px;
+    padding-top: 4px;
+  }
+  .option-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .option-price sup { font-size: 16px; vertical-align: super; }
+  .option-price-note { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .option-rows { display: flex; flex-direction: column; gap: 7px; }
+  .option-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--mid);
+  }
+  .option-row::before {
+    content: '–';
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-line {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    margin-top: 6px;
+  }
+  .step:last-child .step-line { display: none; }
+  .step-body {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    flex: 1;
+    margin-top: 0;
+  }
+  .step-body h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .step-body p, .step-body li {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .step-body ul { padding-left: 18px; display: flex; flex-direction: column; gap: 5px; margin-top: 6px; }
+  .step-body strong { color: var(--dark); font-weight: 600; }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-red { background: #FEE2E2; color: #991B1B; }
+  .tag-green { background: var(--green-light); color: var(--green); }
+
+  /* ── WARNING BOX ── */
+  .callout {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .callout-warn {
+    background: var(--amber-light);
+    border-color: #FCD34D;
+    color: var(--amber);
+  }
+  .callout-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+  /* ── SALES TIPS ── */
+  .tips { display: flex; flex-direction: column; gap: 10px; }
+  .tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .tip-num {
+    width: 24px; height: 24px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tip p { font-size: 14px; color: var(--mid); line-height: 1.55; }
+  .tip strong { color: var(--dark); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: .02em;
+  }
+  .footer-meta { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Agent Reference Guide</div>
+    <h1>State Filings Bundle <span>+</span><br>Annual Report</h1>
+    <div class="hero-sub">Updated mid-2025 · Checkout flow changes</div>
+  </div>
+
+  <!-- WHAT CHANGED -->
+  <div class="section">
+    <div class="section-title">What Changed</div>
+    <div class="change-list">
+      <div class="change-item">
+        <div class="change-dot"></div>
+        <p>As of <strong>mid-2025</strong>, customers placing an Annual Report order are offered the option to add the <strong>State Filings Bundle (SFB)</strong> subscription at a lower price than the standalone processing fee.</p>
+      </div>
+      <div class="change-item">
+        <div class="change-dot"></div>
+        <p>Annual Report processing fee increased from <strong>$99 → $129</strong> on <strong>April 27, 2025</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXT OVERVIEW -->
+  <div class="section">
+    <div class="section-title">Checkout Options</div>
+    <div class="options-grid">
+
+      <div class="option-card">
+        <div class="option-title">Annual Report Only</div>
+        <div class="option-price"><sup>$</sup>129</div>
+        <div class="option-price-note">one-time processing fee</div>
+        <div class="option-rows">
+          <div class="option-row">Single filing covered</div>
+          <div class="option-row">+ State fee on top</div>
+          <div class="option-row">No subscription</div>
+          <div class="option-row">Future filings billed separately</div>
+        </div>
+      </div>
+
+      <div class="option-card featured">
+        <div class="option-badge">Best Value</div>
+        <div class="option-title">Annual Report + SFB</div>
+        <div class="option-price"><sup>$</sup>99</div>
+        <div class="option-price-note">per year · cancel anytime</div>
+        <div class="option-rows">
+          <div class="option-row">AR processing fee waived ($0)</div>
+          <div class="option-row">+ State fee on top</div>
+          <div class="option-row">Unlimited eligible state filings</div>
+          <div class="option-row">Renews on AR order anniversary</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMPACTED PROCESSES -->
+  <div class="section">
+    <div class="section-title">Cancellation &amp; Refund Process</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">When a customer with an SFB subscription requests cancellation of their Annual Report, a pop-up will appear in the system. You must confirm which option the customer wants before proceeding.</p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="tag tag-red">Full Cancellation</div>
+          <h3>Cancel / Refund</h3>
+          <p>Cancels both the <strong>AR filing and the SFB subscription</strong>, and issues a full refund.</p>
+          <ul>
+            <li>Before presenting this option, confirm customer eligibility by checking <strong>both cancellation policies</strong>.</li>
+            <li>Customers may have placed additional state filing orders using the waived processing fee — this makes them <strong>ineligible for an SFB refund</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="tag tag-green">Keep Subscription</div>
+          <h3>C/R &amp; Keep Subscription</h3>
+          <p>Keeps the SFB subscription active and <strong>cancels only the AR filing</strong>. Refunds the State Fee exclusively.</p>
+          <ul>
+            <li>Confirm eligibility by reviewing the <strong>Annual Report cancellation policy</strong> (Misc. Order).</li>
+          </ul>
+          <div class="callout callout-warn">
+            <span class="callout-icon">⚠</span>
+            <span>Only the State Fee is refunded under this option. The SFB subscription cost is not refunded and remains active.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SALES -->
+  <div class="section">
+    <div class="section-title">Sales Guidance</div>
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-num">1</div>
+        <p>When helping a customer choose between options, <strong>set clear expectations upfront</strong> about pricing, renewal rate, and what is included in each option.</p>
+      </div>
+      <div class="tip">
+        <div class="tip-num">2</div>
+        <p><strong>Lead with value, not price.</strong> Use the interaction as an opportunity to highlight the State Filings Bundle — unlimited filing fees waived for all supported filings within the year.</p>
+      </div>
+      <div class="tip">
+        <div class="tip-num">3</div>
+        <p>Always check the <strong>Resource Guide</strong> to confirm product availability before quoting what is covered by the SFB.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-logo">bizee</span>
+    <span class="footer-meta">Internal use only · CX Agent Reference · Updated 2025</span>
+  </div>
+
+</div>
+</body>
+</html>

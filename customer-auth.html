@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Authentication & Merging — Bizee Agent Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #E8572A; --orange-light: #FDF1ED; --orange-mid: #F4C4B0;
+    --dark: #1A1A1A; --mid: #4A4A4A; --muted: #888; --border: #E8E4E0;
+    --bg: #F7F5F3; --white: #FFFFFF;
+    --green: #1A7A4A; --green-light: #EAF6EF; --green-border: #A7D7BC;
+    --red: #991B1B; --red-light: #FEE2E2; --red-border: #FCA5A5;
+    --amber: #B45309; --amber-light: #FEF3C7;
+    --blue: #1E40AF; --blue-light: #EFF6FF; --blue-border: #BFDBFE;
+    --radius: 10px; --radius-sm: 6px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; font-size: 15px; }
+  .page { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  /* HERO */
+  .hero { background: var(--dark); border-radius: 14px; padding: 40px 40px 36px; margin-bottom: 32px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 260px; height: 260px; background: var(--orange); border-radius: 50%; opacity: .12; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: 20px; width: 180px; height: 180px; background: var(--orange); border-radius: 50%; opacity: .06; }
+  .hero-label { display: inline-block; background: var(--orange); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 16px; }
+  .hero h1 { font-size: 30px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,.45); font-family: 'DM Mono', monospace; }
+
+  /* SECTION */
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* CHANGE PILLS */
+  .change-list { display: flex; flex-direction: column; gap: 8px; }
+  .change-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 15px; background: var(--orange-light); border: 1px solid var(--orange-mid); border-radius: var(--radius-sm); }
+  .change-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .change-item p { font-size: 13.5px; color: var(--mid); line-height: 1.55; }
+  .change-item strong { color: var(--dark); font-weight: 600; }
+
+  /* YES/NO SPLIT */
+  .auth-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .auth-split { grid-template-columns: 1fr; } }
+  .split-card { border-radius: var(--radius); padding: 20px; }
+  .split-card.yes { background: var(--green-light); border: 1.5px solid var(--green-border); }
+  .split-card.no { background: var(--red-light); border: 1.5px solid var(--red-border); }
+  .split-icon { font-size: 22px; margin-bottom: 10px; }
+  .split-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .split-card.yes h4 { color: var(--green); }
+  .split-card.no h4 { color: var(--red); }
+  .split-card p { font-size: 12.5px; line-height: 1.55; }
+  .split-card.yes p { color: #166534; }
+  .split-card.no p { color: #7F1D1D; }
+
+  /* LOCATE LIST */
+  .locate-list { display: flex; flex-direction: column; gap: 6px; }
+  .locate-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .locate-letter { width: 26px; height: 26px; background: var(--dark); color: #fff; font-size: 11px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'DM Mono', monospace; }
+  .locate-text { font-size: 13.5px; color: var(--mid); }
+  .locate-text strong { color: var(--dark); font-weight: 600; }
+
+  /* AUTH FALLBACK CHAIN */
+  .fallback-chain { display: flex; flex-direction: column; gap: 0; }
+  .fallback-step { display: flex; gap: 14px; padding-bottom: 0; }
+  .fallback-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .fallback-badge {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    position: relative; z-index: 1;
+  }
+  .fallback-badge.a { background: #D1FAE5; color: #065F46; }
+  .fallback-badge.b { background: #DBEAFE; color: #1E3A8A; }
+  .fallback-badge.c { background: #FEF3C7; color: #78350F; }
+  .fallback-badge.d { background: var(--orange-light); color: var(--orange); border: 1px solid var(--orange-mid); }
+  .fallback-bridge { display: flex; gap: 14px; align-items: center; height: 28px; }
+  .fb-line-col { width: 28px; flex-shrink: 0; display: flex; justify-content: center; }
+  .fb-line { width: 1px; height: 100%; background: var(--border); }
+  .fb-label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 2px 10px; background: var(--white); border: 1px solid var(--border); border-radius: 20px; }
+  .fallback-body { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; flex: 1; }
+  .fallback-body h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .fallback-body p { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
+  .fallback-body strong { color: var(--dark); font-weight: 600; }
+  .fallback-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .fallback-opt { font-size: 11.5px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--bg); border: 1px solid var(--border); color: var(--mid); }
+
+  /* RECOVERY CALLOUT */
+  .callout { display: flex; gap: 10px; padding: 14px 16px; border-radius: var(--radius-sm); border: 1px solid; font-size: 13px; line-height: 1.6; }
+  .callout-amber { background: var(--amber-light); border-color: #FCD34D; color: var(--amber); }
+  .callout-blue { background: var(--blue-light); border-color: var(--blue-border); color: var(--blue); }
+  .callout strong { font-weight: 600; }
+
+  /* QUOTE BOX */
+  .quote-box { background: var(--bg); border-left: 3px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 16px; margin: 14px 0; }
+  .quote-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+  .quote-text { font-size: 13.5px; color: var(--dark); font-style: italic; line-height: 1.65; }
+
+  /* YES/NO RESPONSE PATHS */
+  .response-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 520px) { .response-paths { grid-template-columns: 1fr; } }
+  .path-card { border-radius: var(--radius-sm); padding: 14px 16px; border: 1px solid; }
+  .path-card.yes { background: var(--green-light); border-color: var(--green-border); }
+  .path-card.no { background: var(--red-light); border-color: var(--red-border); }
+  .path-label { font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+  .path-card.yes .path-label { color: var(--green); }
+  .path-card.no .path-label { color: var(--red); }
+  .path-card p { font-size: 12.5px; line-height: 1.55; }
+  .path-card.yes p { color: #166534; }
+  .path-card.no p { color: #7F1D1D; }
+
+  /* FOOTER */
+  .footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .footer-logo { font-size: 13px; font-weight: 700; color: var(--orange); }
+  .footer-meta { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Agent Reference Guide</div>
+    <h1>Customer <span>Authentication</span><br>&amp; Record Keeping</h1>
+    <div class="hero-sub">Updated Jan 27 · SSN removed · Merging replaced</div>
+  </div>
+
+  <!-- WHAT CHANGED -->
+  <div class="section">
+    <div class="section-title">What Changed</div>
+    <div class="change-list">
+      <div class="change-item"><div class="change-dot"></div><p><strong>SSN no longer required.</strong> The authentication hierarchy was updated — agents should no longer ask for Social Security information. Instead, require the <strong>date and amount of the last transaction</strong> recorded for the account.</p></div>
+      <div class="change-item"><div class="change-dot"></div><p><strong>User merging in Zendesk is no longer required</strong> as of January 27. The updated procedure requires <strong>updating the ticket requester</strong> once a client has been authenticated.</p></div>
+    </div>
+  </div>
+
+  <!-- STEP 1: DETERMINE IF AUTH NEEDED -->
+  <div class="section">
+    <div class="section-title">Step 1 — Determine if Authentication is Needed</div>
+    <div class="auth-split">
+      <div class="split-card yes">
+        <div class="split-icon">✅</div>
+        <h4>No authentication needed</h4>
+        <p>Callers and email senders are considered authenticated when they contact us using the <strong>phone number or email address registered on file.</strong> No additional verification needed if this matches our registry and pulls the account up.</p>
+      </div>
+      <div class="split-card no">
+        <div class="split-icon">❌</div>
+        <h4>Authentication required</h4>
+        <p>If the email or phone number shown in Zendesk is <strong>not registered in DB/Bizee Tech</strong>, you must verify the individual's identity. Additional steps are required if the account was not located.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: LOCATE ACCOUNT -->
+  <div class="section">
+    <div class="section-title">Step 2 — Locate the Account</div>
+    <div class="locate-list">
+      <div class="locate-item"><div class="locate-letter">A</div><div class="locate-text"><strong>Order number</strong></div></div>
+      <div class="locate-item"><div class="locate-letter">B</div><div class="locate-text"><strong>First and last name</strong> of the point of contact</div></div>
+      <div class="locate-item"><div class="locate-letter">C</div><div class="locate-text"><strong>Company name</strong></div></div>
+      <div class="locate-item"><div class="locate-letter">D</div><div class="locate-text"><strong>DB link</strong> on Zendesk, if available</div></div>
+    </div>
+  </div>
+
+  <!-- STEP 3: AUTHENTICATE — FALLBACK CHAIN -->
+  <div class="section">
+    <div class="section-title">Step 3 — Authenticate (Fallback Chain)</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Work through each option in order. Only move to the next if the customer cannot provide the current one.</p>
+
+    <div class="fallback-chain">
+
+      <div class="fallback-step">
+        <div class="fallback-left"><div class="fallback-badge a">A</div></div>
+        <div class="fallback-body">
+          <h4>Phone number / Email on file</h4>
+          <p>Check if the phone number or email on file matches a profile in the <strong>client tab on DB</strong>.</p>
+        </div>
+      </div>
+
+      <div class="fallback-bridge">
+        <div class="fb-line-col"><div class="fb-line"></div></div>
+        <span class="fb-label">If unable to verify → continue to B</span>
+      </div>
+
+      <div class="fallback-step">
+        <div class="fallback-left"><div class="fallback-badge b">B</div></div>
+        <div class="fallback-body">
+          <h4>Payment details</h4>
+          <p>Ask for one of the following:</p>
+          <div class="fallback-options">
+            <span class="fallback-opt">Last 4 digits of primary card</span>
+            <span class="fallback-opt">Last 4 of temp Apple Pay card (via dashboard)</span>
+            <span class="fallback-opt">PayPal email</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fallback-bridge">
+        <div class="fb-line-col"><div class="fb-line"></div></div>
+        <span class="fb-label">If unable to verify → continue to C</span>
+      </div>
+
+      <div class="fallback-step">
+        <div class="fallback-left"><div class="fallback-badge c">C</div></div>
+        <div class="fallback-body">
+          <h4>Billing address</h4>
+          <p>Ask for one of the following:</p>
+          <div class="fallback-options">
+            <span class="fallback-opt">Street + city</span>
+            <span class="fallback-opt">Billing zip code</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fallback-bridge">
+        <div class="fb-line-col"><div class="fb-line"></div></div>
+        <span class="fb-label">If unable to verify → continue to D</span>
+      </div>
+
+      <div class="fallback-step">
+        <div class="fallback-left"><div class="fallback-badge d">D</div></div>
+        <div class="fallback-body">
+          <h4>Last transaction</h4>
+          <p>Ask for the <strong>date and amount</strong> of the last charge processed for the account (transaction history).</p>
+          <div style="margin-top:10px">
+            <div class="callout callout-amber">
+              <span>⚠&nbsp;</span><span>If still unable to authenticate, direct to <strong>Account Recovery</strong> (see below). Do not grant access.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACCOUNT RECOVERY -->
+  <div class="section">
+    <div class="section-title">Account Recovery</div>
+    <div class="callout callout-blue">
+      <span>ℹ&nbsp;</span>
+      <span>If the caller cannot provide any authentication information, request them to <strong>reach out from the email or phone number on file</strong> so you can grant access and update the account if required.</span>
+    </div>
+  </div>
+
+  <!-- KEEPING RECORDS UPDATED -->
+  <div class="section">
+    <div class="section-title">Keeping Records Updated (formerly Merging)</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px;line-height:1.6;">If a caller or email sender is <strong>not using the contact details on file</strong> but has been <strong>successfully authenticated</strong>, it is your responsibility to offer an update to their account information.</p>
+
+    <div class="quote-label">Suggested verbiage</div>
+    <div class="quote-box">
+      <div class="quote-text">"Thank you for providing this information. Now that I have access to your account, would you like me to update your phone number/email address on file so we can locate your account faster next time?"</div>
+    </div>
+
+    <div class="response-paths">
+      <div class="path-card yes">
+        <div class="path-label">If "Yes"</div>
+        <p>Send an email requesting them to confirm the contact information on file. Once received, <strong>update contact details on DB and in Zendesk's user profile.</strong></p>
+      </div>
+      <div class="path-card no">
+        <div class="path-label">If "No"</div>
+        <p><strong>Change the ticket requester in Zendesk</strong> using the contact's email address.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">bizee</span>
+    <span class="footer-meta">Internal use only · CX Agent Reference · Updated Jan 27</span>
+  </div>
+
+</div>
+</body>
+</html>
