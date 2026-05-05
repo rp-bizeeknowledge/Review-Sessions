@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SFB + Annual Report — Bizee Agent Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,9 +82,9 @@
   /* ── SECTION WRAPPER ── */
   .section { margin-bottom: 28px; }
   .section-title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .1em;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: .109em;
     text-transform: uppercase;
     color: var(--orange);
     margin-bottom: 14px;
@@ -135,6 +134,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
+    max-width: 660px;
+    margin: 0 auto;
   }
   @media (max-width: 560px) { .options-grid { grid-template-columns: 1fr; } }
 
@@ -142,8 +143,8 @@
     background: var(--white);
     border: 1.5px solid var(--border);
     border-radius: var(--radius);
-    padding: 20px;
     position: relative;
+    padding: 30px 36px 0px;
   }
   .option-card.featured {
     border-color: var(--orange);
@@ -164,11 +165,12 @@
     white-space: nowrap;
   }
   .option-title {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--dark);
     margin-bottom: 14px;
     padding-top: 4px;
+    text-align: center;
   }
   .option-price {
     font-size: 28px;
@@ -176,9 +178,10 @@
     color: var(--dark);
     line-height: 1;
     margin-bottom: 4px;
+    text-align: center;
   }
   .option-price sup { font-size: 16px; vertical-align: super; }
-  .option-price-note { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .option-price-note { font-size: 15px; color: var(--muted); margin-bottom: 16px; }
   .option-rows { display: flex; flex-direction: column; gap: 7px; }
   .option-row {
     display: flex;
@@ -256,8 +259,8 @@
     border-radius: 4px;
     margin-bottom: 8px;
   }
-  .tag-red { background: #FEE2E2; color: #991B1B; }
-  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-red { background:; color: #991B1B; }
+  .tag-green { background: ; color: var(--green); }
 
   /* ── WARNING BOX ── */
   .callout {
@@ -329,9 +332,9 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-label">Agent Reference Guide</div>
-    <h1>State Filings Bundle <span>+</span><br>Annual Report</h1>
-    <div class="hero-sub">Updated mid-2025 · Checkout flow changes</div>
+    
+    <h1><span>Annual Report</span> + <br>State Filings Bundle</h1><br>
+    <div class="hero-sub">Updated: Mid 2025 <br>Changes in checkout options and subscription activation </div>
   </div>
 
   <!-- WHAT CHANGED -->
@@ -340,11 +343,11 @@
     <div class="change-list">
       <div class="change-item">
         <div class="change-dot"></div>
-        <p>As of <strong>mid-2025</strong>, customers placing an Annual Report order are offered the option to add the <strong>State Filings Bundle (SFB)</strong> subscription at a lower price than the standalone processing fee.</p>
+        <p>Customers placing an <strong>Annual Report</strong> order are now offered the option to add the <strong>State Filings Bundle (SFB)</strong> subscription, waiving the processing fee.</p>
       </div>
       <div class="change-item">
         <div class="change-dot"></div>
-        <p>Annual Report processing fee increased from <strong>$99 → $129</strong> on <strong>April 27, 2025</strong>.</p>
+        <p>The Annual Report processing fee increased from $99 to<strong> $129</strong> as of <strong>April 27, 2026</strong>.</p>
       </div>
     </div>
   </div>
@@ -352,12 +355,14 @@
   <!-- CONTEXT OVERVIEW -->
   <div class="section">
     <div class="section-title">Checkout Options</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Customers are presented with two options before paying for an Annual Report Order</p>
+<img src="https://raw.githubusercontent.com/rp-bizeeknowledge/Assets/main/AR%20Checkout%20options.png" alt="Checkout options screenshot" style="width:100%;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
     <div class="options-grid">
 
       <div class="option-card">
         <div class="option-title">Annual Report Only</div>
-        <div class="option-price"><sup>$</sup>129</div>
-        <div class="option-price-note">one-time processing fee</div>
+        <div class="option-price"><sup>$</sup>129</div><br>
+        <div class="option-price-note"style="text-align:center;">one-time processing fee</em></div><br>
         <div class="option-rows">
           <div class="option-row">Single filing covered</div>
           <div class="option-row">+ State fee on top</div>
@@ -367,15 +372,14 @@
       </div>
 
       <div class="option-card featured">
-        <div class="option-badge">Best Value</div>
         <div class="option-title">Annual Report + SFB</div>
-        <div class="option-price"><sup>$</sup>99</div>
-        <div class="option-price-note">per year · cancel anytime</div>
+        <div class="option-price"><sup>$</sup>99</div><br>
+        <div class="option-price-note" style="text-align:center;"> yearly renewal </div><br>
         <div class="option-rows">
           <div class="option-row">AR processing fee waived ($0)</div>
           <div class="option-row">+ State fee on top</div>
           <div class="option-row">Unlimited eligible state filings</div>
-          <div class="option-row">Renews on AR order anniversary</div>
+          <div class="option-row">Renews on AR order anniversary</div><br>
         </div>
       </div>
 
@@ -386,28 +390,32 @@
   <div class="section">
     <div class="section-title">Cancellation &amp; Refund Process</div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">When a customer with an SFB subscription requests cancellation of their Annual Report, a pop-up will appear in the system. You must confirm which option the customer wants before proceeding.</p>
-
+<img src="https://raw.githubusercontent.com/rp-bizeeknowledge/Assets/main/AR%20C%26R%20Confirmation.png" alt="Cancellation options popup screenshot" style="width:60%;border:3px solid var(--border);border-radius:var(--radius);margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;">
     <div class="steps">
 
       <div class="step">
         <div class="step-left">
-          <div class="step-num">1</div>
+          <div class="step-num">A</A></div>
           <div class="step-line"></div>
         </div>
         <div class="step-body">
           <div class="tag tag-red">Full Cancellation</div>
           <h3>Cancel / Refund</h3>
-          <p>Cancels both the <strong>AR filing and the SFB subscription</strong>, and issues a full refund.</p>
+          <p>Cancels both the <strong>AR filing </strong>+<strong> SFB subscription</strong>, and issues a full refund.</p>
           <ul>
             <li>Before presenting this option, confirm customer eligibility by checking <strong>both cancellation policies</strong>.</li>
-            <li>Customers may have placed additional state filing orders using the waived processing fee — this makes them <strong>ineligible for an SFB refund</strong>.</li>
+            <div style="display:flex;gap:8px;margin:10px 0;justify-content:center;">
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">AR C&amp;R Guidelines</a>
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JXBE62HP29YR23WVH0X34:~:text=and%20click%20Refund.-,State%20Filings%20Bundle,-Rules" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">SFB C&amp;R Guidelines</a>
+            </div>
+            <li>Customers may have placed additional state filing orders using the waived processing fee this makes them <strong>ineligible for an SFB refund</strong>.</li>
           </ul>
         </div>
       </div>
 
       <div class="step">
         <div class="step-left">
-          <div class="step-num">2</div>
+          <div class="step-num">B</div>
           <div class="step-line"></div>
         </div>
         <div class="step-body">
@@ -415,7 +423,9 @@
           <h3>C/R &amp; Keep Subscription</h3>
           <p>Keeps the SFB subscription active and <strong>cancels only the AR filing</strong>. Refunds the State Fee exclusively.</p>
           <ul>
-            <li>Confirm eligibility by reviewing the <strong>Annual Report cancellation policy</strong> (Misc. Order).</li>
+            <li>Confirm eligibility by reviewing the <strong>Annual Report cancellation policy</strong></li><div style="display:flex;gap:8px;margin:10px 0;justify-content:center;">
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">AR C&amp;R Guidelines</a>
+              
           </ul>
           <div class="callout callout-warn">
             <span class="callout-icon">⚠</span>
@@ -429,7 +439,7 @@
 
   <!-- SALES -->
   <div class="section">
-    <div class="section-title">Sales Guidance</div>
+    <div class="section-title">Sales Updates</div>
     <div class="tips">
       <div class="tip">
         <div class="tip-num">1</div>
@@ -437,7 +447,7 @@
       </div>
       <div class="tip">
         <div class="tip-num">2</div>
-        <p><strong>Lead with value, not price.</strong> Use the interaction as an opportunity to highlight the State Filings Bundle — unlimited filing fees waived for all supported filings within the year.</p>
+        <p><strong>Lead with value, not price.</strong> Use the interaction as an opportunity to highlight the State Filings Bundle unlimited filing fees waived for all supported filings within the year.</p>
       </div>
       <div class="tip">
         <div class="tip-num">3</div>
@@ -448,8 +458,8 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <span class="footer-logo">bizee</span>
-    <span class="footer-meta">Internal use only · CX Agent Reference · Updated 2025</span>
+    <span class="footer-logo">Bizee</span>
+    <span class="footer-meta">Internal use only · Customer Service · 2026</span>
   </div>
 
 </div>
