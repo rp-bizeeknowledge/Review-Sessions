@@ -133,7 +133,7 @@
   .options-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 65px;
     max-width: 660px;
     margin: 0 auto;
   }
@@ -145,6 +145,7 @@
     border-radius: var(--radius);
     position: relative;
     padding: 30px 36px 0px;
+    margin-left: 8px;
   }
   .option-card.featured {
     border-color: var(--orange);
@@ -360,19 +361,17 @@
     <div class="section-title">Example</div>
         <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">NY Annual Report checkout summaries</p>
         <div style="display:flex;gap:12px;">
-  <img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
-  <img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/No%20Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
-</div>
+   <img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/No%20Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
+<img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
+ </div>
 <br>
 <div class="options-grid">
 
       <div class="option-card">
         <div class="option-title">Annual Report Only</div>
-        <div class="option-price"><sup>$</sup>129</div><br>
         <div class="option-price-note"style="text-align:center;">one-time processing fee</em></div><br>
         <div class="option-rows">
           <div class="option-row">Single filing covered</div>
-          <div class="option-row">+ State fee on top</div>
           <div class="option-row">No subscription</div>
           <div class="option-row">Future filings billed separately</div>
         </div>
@@ -380,11 +379,9 @@
 
       <div class="option-card featured">
         <div class="option-title">Annual Report + SFB</div>
-        <div class="option-price"><sup>$</sup>99</div><br>
         <div class="option-price-note" style="text-align:center;"> yearly renewal </div><br>
         <div class="option-rows">
           <div class="option-row">AR processing fee waived ($0)</div>
-          <div class="option-row">+ State fee on top</div>
           <div class="option-row">Unlimited eligible state filings</div>
           <div class="option-row">Renews on AR order anniversary</div><br>
         </div>
