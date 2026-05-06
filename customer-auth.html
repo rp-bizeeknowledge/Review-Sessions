@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer Authentication & Merging — Bizee Agent Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Customer Authentication &amp; Merging — Bizee Agent Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -67,7 +67,7 @@
   .split-card.no p { color: var(--dark); }
 
   /* LOCATE LIST */
-  .locate-list { display: flex; flex-direction: column; gap: 6px; }
+  .locate-list { display: flex; flex-direction: column; gap: 6px; max-width: 55%; margin-left: 18%; }
   .locate-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
   .locate-letter { width: 26px; height: 26px; background: var(--dark); color: #fff; font-size: 11px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'DM Mono', monospace; }
   .locate-text { font-size: 13.5px; color: var(--mid); }
@@ -101,17 +101,32 @@
   .fallback-body strong { color: var(--dark); font-weight: 600; }
   .fallback-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
   .fallback-opt { font-size: 11.5px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--bg); border: 1px solid var(--border); color: var(--mid); }
+  @media (max-width: 620px) {
+    .locate-list,
+    .fallback-step,
+    .fallback-bridge {
+      width: 100% !important;
+      max-width: 100%;
+      margin-left: 0 !important;
+    }
+    .fallback-bridge { gap: 6px; }
+    .fb-label { white-space: normal; text-align: center; line-height: 1.35; }
+  }
 
   /* RECOVERY CALLOUT */
   .callout { display: flex; gap: 10px; padding: 14px 16px; border-radius: var(--radius-sm); border: 1px solid; font-size: 13px; line-height: 1.6; }
   .callout-amber { background: var(--amber-light); border-color: #FCD34D; color: var(--amber); }
   .callout-blue { background: var(--blue-light); border-color: var(--blue-border); color: var(--blue); }
   .callout strong { font-weight: 600; }
+  .recovery-panel { background: var(--blue-light); border: 1.5px solid var(--blue-border); border-radius: var(--radius); padding: 18px 20px; }
+  .recovery-panel p { color: var(--mid); }
 
   /* QUOTE BOX */
-  .quote-box { background: var(--bg); border-left: 3px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 16px; margin: 10px 20px 16px; }
+  .quote-box { background: var(--bg); border-left: 3px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 16px; margin: 10px 0 16px; }
   .quote-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #4A4A4A; margin-bottom: 6px; }
   .quote-text { font-size: 13.5px; color: var(--mid); font-style: italic; line-height: 1.65; }
+  .records-panel .quote-box { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 16px; }
+  .decision-label { text-align: center; font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
 
   /* YES/NO RESPONSE PATHS */
   .response-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
@@ -125,11 +140,162 @@
   .path-card.no .path-label { color: var(--red); }
   .path-card p { font-size: 13px; line-height: 1.6; color: var(--mid); }
   .path-card strong { color: var(--dark); font-weight: 600; }
+  .records-panel .response-paths { margin-top: 0; }
 
   /* FOOTER */
   .footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   .footer-logo { font-size: 13px; font-weight: 700; color: var(--orange); }
   .footer-meta { font-size: 12px; color: var(--muted); }
+
+  /* LOOKOUT CARDS */
+.lookout-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .lookout-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .lookout-grid { grid-template-columns: 1fr; } }
+
+.lookout-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lookout-visual {
+  min-height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.lookout-visual::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255,255,255,.52);
+  border-radius: 12px;
+}
+
+.lookout-visual.auth { background: linear-gradient(135deg, #143D59, #2F7E79); }
+.lookout-visual.payment { background: linear-gradient(135deg, #7C2D12, #E8572A); }
+.lookout-visual.merge { background: linear-gradient(135deg, #312E81, #2563EB); }
+.lookout-visual.recovery { background: linear-gradient(135deg, #365314, #1A7A4A); }
+.lookout-visual.clean { background: linear-gradient(135deg, #334155, #0F766E); }
+.lookout-visual.identity { background: linear-gradient(135deg, #92400E, #D97706); }
+.lookout-visual.contact { background: linear-gradient(135deg, #1D4ED8, #7C3AED); }
+
+.lookout-visual.image-preview {
+  min-height: 132px;
+  background: linear-gradient(180deg, #FBFAF8, #F4F1EE);
+  cursor: pointer;
+  border: 0;
+  padding: 12px;
+  width: 100%;
+}
+
+.lookout-visual.image-preview::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(232, 228, 224, .9);
+  border-radius: 7px;
+  pointer-events: none;
+}
+.lookout-visual.image-preview .lookout-thumb {
+  width: 100%;
+  height: 108px;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  border: 1px solid rgba(232, 228, 224, .95);
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: 0 8px 18px rgba(26,26,26,.08);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.lookout-visual.image-preview:hover .lookout-thumb { transform: scale(1.025); }
+.lookout-visual.image-preview::after {
+  content: 'Preview';
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  background: rgba(26,26,26,.78);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.lookout-visual.image-preview:hover::after,
+.lookout-visual.image-preview:focus-visible::after { opacity: 1; }
+
+.image-modal { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 24px; }
+.image-modal.is-open { display: flex; }
+.image-modal-backdrop { position: absolute; inset: 0; background: rgba(26,26,26,.72); }
+.image-modal-content { position: relative; max-width: min(980px, 94vw); max-height: 88vh; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.34); }
+.image-modal-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.image-modal-title { font-size: 13px; font-weight: 700; color: var(--dark); }
+.image-modal-close { width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 50%; background: var(--white); color: var(--dark); cursor: pointer; font-size: 18px; line-height: 1; }
+.image-modal-img { display: block; max-width: 100%; max-height: calc(88vh - 56px); object-fit: contain; background: var(--bg); }
+
+.lookout-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  box-shadow: 0 16px 34px rgba(0,0,0,.18);
+  position: relative;
+}
+
+.lookout-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lookout-body { padding: 14px 16px 16px; }
+
+.lookout-kicker {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 5px;
+}
+
+.lookout-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+
+.lookout-body p {
+  font-size: 12.75px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+.lookout-body strong {
+  color: var(--dark);
+  font-weight: 600;
+}
+
 </style>
 </head>
 <body>
@@ -267,29 +433,77 @@
   <!-- ACCOUNT RECOVERY -->
   <div class="section">
     <div class="section-title">Account Recovery</div>
-    <p class="section-desc">If the caller cannot provide any authentication information, request them to <strong>reach out from the email or phone number on file</strong> so you can grant access and update the account if required.</p>
+    <div class="recovery-panel">
+      <p>If the caller cannot provide any authentication information, request them to <strong>reach out from the email or phone number on file</strong> so you can grant access and update the account if required.</p>
+    </div>
   </div>
 
   <!-- KEEPING RECORDS UPDATED -->
   <div class="section">
     <div class="section-title">Keeping Records Updated (formerly Merging)</div>
-    <p class="section-desc">If a caller or email sender is not using the contact details on file but has been successfully authenticated, offer to update their account information before ending the interaction.</p>
-    <br><div class="quote-label">Suggested verbiage</div>
-    <div class="quote-box">
-      <div class="quote-text">"Thank you for providing this information. Now that I have access to your account, would you like me to update your phone number/email address on file so we can locate your account faster next time?"</div>
-    </div>
-    <br>
-    <div class="response-paths">
-      <div class="path-card yes">
-        <div class="path-label"><span class="path-label-icon">✓</span> If "Yes"</div>
-        <p style="text-align: center;">Send an email requesting them to confirm the contact information on file. Once received, <strong>update contact details on DB and in Zendesk's user profile.</strong></p>
+    <p class="section-desc">If a caller or email sender is not using the contact details on file but has been successfully authenticated, <strong>offer to update their account information</strong> before ending the interaction.</p>
+
+    <div class="records-panel">
+      <div class="quote-box">
+        <div class="quote-label">Suggested script</div>
+        <div class="quote-text">" Would you like me to update your contact information on file so we can locate your account faster next time?"</div>
       </div>
-      <div class="path-card no">
-        <div class="path-label"><span class="path-label-icon">✕</span> If "No"</div>
-        <p style="text-align: center;"><strong>Change the ticket requester in Zendesk</strong> using the contact's email address.</p>
+
+
+      <div class="response-paths">
+        <div class="path-card yes">
+          <div class="path-label"> If "Yes"</div>
+          <p style="text-align: center;">Send an email requesting them to confirm the contact information on file. Once received, <strong>update contact details on DB and in Zendesk's user profile.</strong></p>
+        </div>
+        <div class="path-card no">
+          <div class="path-label">If "No"</div>
+          <p style="text-align: center;"><strong>Change the ticket requester in Zendesk</strong> using the contact's email address.</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- GOOD HOUSEKEEPING -->
+  <div class="section">
+    <div class="section-title">Good Housekeeping</div>
+    <p class="section-desc">Be on the lookout for these common action items before wrapping up an authenticated interaction.</p>
+
+    <div class="lookout-grid">
+      <div class="lookout-card">
+        <button class="lookout-visual image-preview" type="button" data-modal-image="https://github.com/rp-bizeeknowledge/Assets/blob/main/Duplicate%20phone%20%23%20Cx.png?raw=true" data-modal-title="Duplicate contact info example">
+          <img class="lookout-thumb" src="https://github.com/rp-bizeeknowledge/Assets/blob/main/Duplicate%20phone%20%23%20Cx.png?raw=true" alt="Example showing duplicate phone number on a customer profile">
+        </button>
+        <div class="lookout-body">
+          <div class="lookout-kicker">Duplicate contact info</div>
+          <h4>Watch for repeated email or phone entries</h4>
+          <p>If duplicate details appear across profiles, confirm the correct account and <strong>keep Zendesk aligned with DB/Bizee Tech.</strong></p>
+        </div>
+      </div>
+
+      <div class="lookout-card">
+        <button class="lookout-visual image-preview" type="button" data-modal-image="https://github.com/rp-bizeeknowledge/Assets/blob/main/No%20name%20Cx.png?raw=true" data-modal-title="Missing name example">
+          <img class="lookout-thumb" src="https://github.com/rp-bizeeknowledge/Assets/blob/main/No%20name%20Cx.png?raw=true" alt="Example showing a customer profile with no name">
+        </button>
+        <div class="lookout-body">
+          <div class="lookout-kicker">Missing names</div>
+          <h4>Fill in incomplete contact names</h4>
+          <p>When the customer confirms their identity, update missing first or last names so future agents can <strong>locate the record faster.</strong></p>
+        </div>
+      </div>
+
+      <div class="lookout-card">
+        <button class="lookout-visual image-preview" type="button" data-modal-image="https://github.com/rp-bizeeknowledge/Assets/blob/main/Outdated%20email%20Cx.png?raw=true" data-modal-title="Outdated contact info example">
+          <img class="lookout-thumb" src="https://github.com/rp-bizeeknowledge/Assets/blob/main/Outdated%20email%20Cx.png?raw=true" alt="Example showing outdated email on a customer profile">
+        </button>
+        <div class="lookout-body">
+          <div class="lookout-kicker">Outdated contact info</div>
+          <h4>Offer to update stale phone or email details</h4>
+          <p>If they reached out from a new contact method, ask whether they want it saved and <strong>update DB and Zendesk when confirmed.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
@@ -298,5 +512,50 @@
   </div>
 
 </div>
+
+<div class="image-modal" id="imageModal" aria-hidden="true">
+  <div class="image-modal-backdrop" data-modal-close></div>
+  <div class="image-modal-content" role="dialog" aria-modal="true" aria-labelledby="imageModalTitle">
+    <div class="image-modal-header">
+      <div class="image-modal-title" id="imageModalTitle">Example preview</div>
+      <button class="image-modal-close" type="button" data-modal-close aria-label="Close preview">×</button>
+    </div>
+    <img class="image-modal-img" id="imageModalImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+  const imageModal = document.getElementById('imageModal');
+  const imageModalImg = document.getElementById('imageModalImg');
+  const imageModalTitle = document.getElementById('imageModalTitle');
+
+  document.querySelectorAll('[data-modal-image]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      imageModalImg.src = trigger.dataset.modalImage;
+      imageModalImg.alt = trigger.querySelector('img')?.alt || 'Example preview';
+      imageModalTitle.textContent = trigger.dataset.modalTitle || 'Example preview';
+      imageModal.classList.add('is-open');
+      imageModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeImageModal() {
+    imageModal.classList.remove('is-open');
+    imageModal.setAttribute('aria-hidden', 'true');
+    imageModalImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-modal-close]').forEach((trigger) => {
+    trigger.addEventListener('click', closeImageModal);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && imageModal.classList.contains('is-open')) {
+      closeImageModal();
+    }
+  });
+</script>
 </body>
 </html>
