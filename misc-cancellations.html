@@ -9,7 +9,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --orange: #E8572A; --orange-light: #FDF1ED; --orange-mid: #F4C4B0;
-    --dark: #1A1A1A; --mid: #4A4A4A; --muted: #888; --border: #E8E4E0;
+    --dark: #1A1A1A; --mid: #222222; --muted: #4A4A4A; --border: #E8E4E0;
     --bg: #F7F5F3; --white: #FFFFFF;
     --green: #1A7A4A; --green-light: #EAF6EF; --green-border: #A7D7BC;
     --red: #991B1B; --red-light: #FEE2E2; --red-border: #FCA5A5;
@@ -17,7 +17,7 @@
     --blue: #1E40AF; --blue-light: #EFF6FF; --blue-border: #BFDBFE;
     --radius: 10px; --radius-sm: 6px;
   }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; font-size: 15px; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; font-size: 15px; font-weight: 500; }
   .page { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
 
   /* HERO */
@@ -27,7 +27,7 @@
   .hero-label { display: inline-block; background: var(--orange); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 16px; }
   .hero h1 { font-size: 30px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 10px; }
   .hero h1 span { color: var(--orange); }
-  .hero-sub { font-size: 13px; color: rgba(255,255,255,.45); font-family: 'DM Mono', monospace; }
+  .hero-sub { font-size: 14px; color: rgba(255, 255, 255, 0.838); font-family: 'DM Mono', monospace; }
 
   /* SECTION */
   .section { margin-bottom: 28px; }
@@ -46,7 +46,7 @@
   /* CHANGE PILL */
   .change-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--orange-light); border: 1px solid var(--orange-mid); border-radius: var(--radius-sm); margin: 1%; }
   .change-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
-  .change-item p { font-size: 13.5px; color: var(--mid); line-height: 1.55; }
+  .change-item p { font-size: 15px; color: var(--mid); line-height: 1.55; }
   .change-item strong { color: var(--dark); font-weight: 600; }
 
   /* PROCESS STEPS */
@@ -57,12 +57,12 @@
   .process-line { width: 1px; flex: 1; min-height: 14px; background: var(--border); margin-top: 4px; }
   .process-step:last-child .process-line { display: none; }
   .process-body { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; flex: 1; margin-bottom: 14px; }
-  .process-body h4 { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-  .process-body p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .process-body h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .process-body p { font-size: 14px; color: var(--mid); line-height: 1.6; }
   .process-body strong { color: var(--dark); font-weight: 600; }
 
   /* CALLOUTS */
-  .callout { display: flex; gap: 10px; padding: 13px 15px; border-radius: var(--radius-sm); border: 1px solid; font-size: 13px; line-height: 1.6; }
+  .callout { display: flex; gap: 10px; padding: 13px 15px; border-radius: var(--radius-sm); border: 1px solid; font-size: 14px; line-height: 1.6; }
   .callout-amber { background: var(--amber-light); border-color: var(--amber-border); color: var(--amber); }
   .callout-red { background: var(--red-light); border-color: var(--red-border); color: var(--red); }
   .callout-blue { background: var(--blue-light); border-color: var(--blue-border); color: var(--blue); }
@@ -82,7 +82,7 @@
   .rule-item.deny { background: var(--red-light); border-color: var(--red-border); }
   .rule-item.note { background: var(--amber-light); border-color: var(--amber-border); }
   .rule-icon { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
-  .rule-item p { font-size: 13px; line-height: 1.55; }
+  .rule-item p { font-size: 14px; line-height: 1.55; }
   .rule-item.allow p { color: #166534; }
   .rule-item.deny p { color: var(--red); }
   .rule-item.note p { color: var(--amber); }
@@ -96,22 +96,22 @@
   .ein-line { width: 1px; flex: 1; min-height: 14px; background: var(--border); margin-top: 4px; }
   .ein-step:last-child .ein-line { display: none; }
   .ein-body { flex: 1; padding: 2px 0 16px; }
-  .ein-body p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .ein-body p { font-size: 14px; color: var(--mid); line-height: 1.6; }
   .ein-body strong { color: var(--dark); font-weight: 600; }
 
   /* ESCALATION NOTE */
   .escalation { background: var(--red-light); border: 1px solid var(--red-border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 16px; }
   .escalation-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 5px; }
-  .escalation p { font-size: 13px; color: #7F1D1D; line-height: 1.6; }
+  .escalation p { font-size: 14px; color: #7F1D1D; line-height: 1.6; }
   .escalation strong { font-weight: 600; }
 
   /* SIX MONTHS RULE */
   .special-rule { background: var(--amber-light); border: 1px solid var(--amber-border); border-radius: var(--radius-sm); padding: 14px 16px; }
   .special-rule-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
-  .special-rule p { font-size: 13px; color: #78350F; line-height: 1.6; margin-bottom: 8px; }
+  .special-rule p { font-size: 14px; color: #78350F; line-height: 1.6; margin-bottom: 8px; }
   .special-rule strong { font-weight: 600; }
   .special-sub-list { display: flex; flex-direction: column; gap: 5px; padding-left: 4px; }
-  .special-sub-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #78350F; line-height: 1.55; }
+  .special-sub-item { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #78350F; line-height: 1.55; }
   .special-sub-item::before { content: '→'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
   /* DIVIDER */
@@ -119,7 +119,7 @@
 
   /* FOOTER */
   .footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-  .footer-logo { font-size: 13px; font-weight: 700; color: var(--orange); }
+  .footer-logo { font-size: 14px; font-weight: 700; color: var(--orange); }
   .footer-meta { font-size: 12px; color: var(--muted); }
 </style>
 </head>
@@ -192,7 +192,7 @@
   <!-- EIN EXAMPLE -->
   <div class="section">
     <div class="section-title">Example: EIN Standalone</div>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;font-style:italic;">Screenshot from the Cancellation &amp; Refund Guidelines KB Article</p>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;font-style:italic;">Screenshot from the <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KH4AFKFKYPHJB26C0WJ4DR82:~:text=EIN%2DOnly%20(as,note%20on%20Zendesk." target="_blank" rel="noopener" style="color: inherit;">Cancellation &amp; Refund Guidelines KB Article</a></p>
 
 
       <div style="padding:16px;">

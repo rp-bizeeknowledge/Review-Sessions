@@ -12,8 +12,8 @@
     --orange-light: #FDF1ED;
     --orange-mid: #F4C4B0;
     --dark: #1A1A1A;
-    --mid: #4A4A4A;
-    --muted: #888;
+    --mid: #222222;
+    --muted: #4A4A4A;
     --border: #E8E4E0;
     --bg: #F7F5F3;
     --white: #FFFFFF;
@@ -73,11 +73,8 @@
     margin-bottom: 10px;
   }
   .hero h1 span { color: var(--orange); }
-  .hero-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,.5);
-    font-family: 'DM Mono', monospace;
-  }
+  .hero-sub { font-size: 14px; color: rgba(255, 255, 255, 0.838); font-family: 'DM Mono', monospace; }
+
 
   /* ── SECTION WRAPPER ── */
   .section { margin-bottom: 28px; }
@@ -188,7 +185,7 @@
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--mid);
   }
   .option-row::before {
@@ -214,7 +211,7 @@
     border-radius: 50%;
     background: var(--dark);
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -245,7 +242,7 @@
     margin-bottom: 8px;
   }
   .step-body p, .step-body li {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--mid);
     line-height: 1.6;
   }
@@ -271,7 +268,7 @@
     border-radius: var(--radius-sm);
     border: 1px solid;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.55;
   }
   .callout-warn {
@@ -320,7 +317,7 @@
     gap: 10px;
   }
   .footer-logo {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--orange);
     letter-spacing: .02em;
@@ -356,10 +353,10 @@
   <!-- CONTEXT OVERVIEW -->
   <div class="section">
     <div class="section-title">Checkout Options</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Customers are presented with two options before paying for an Annual Report Order</p>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:18px; font-weight: 600;">Customers are presented with two options before paying for an Annual Report Order</p>
 <img src="https://raw.githubusercontent.com/rp-bizeeknowledge/Assets/main/AR%20Checkout%20options.png" alt="Checkout options screenshot" style="width:100%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
     <div class="section-title">Example</div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">NY Annual Report checkout summaries</p>
+        <p style="font-size:15px;color:var(--muted);margin-bottom:18px; font-weight: 600;">NY Annual Report checkout summaries</p>
         <div style="display:flex;gap:12px;">
    <img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/No%20Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
 <img src="https://github.com/rp-bizeeknowledge/Assets/blob/main/Bundle%20AR.png?raw=true" style="width:50%;border:5px solid var(--border);border-radius:var(--radius);margin-bottom:18px;">
@@ -369,7 +366,9 @@
 
       <div class="option-card">
         <div class="option-title">Annual Report Only</div>
-        <div class="option-price-note"style="text-align:center;">one-time processing fee</em></div><br>
+        <div class="option-price-note"style="text-align:center;">one-time processing fee</em></div>
+        <div class="option-title font-size:18px;font-weight:700;">$129</div>
+
         <div class="option-rows">
           <div class="option-row">Single filing covered</div>
           <div class="option-row">No subscription</div>
@@ -379,7 +378,8 @@
 
       <div class="option-card featured">
         <div class="option-title">Annual Report + SFB</div>
-        <div class="option-price-note" style="text-align:center;"> yearly renewal </div><br>
+        <div class="option-price-note" style="text-align:center;"> yearly renewal </div>
+                <div class="option-title font-size:18px;font-weight:700;">$99</div>
         <div class="option-rows">
           <div class="option-row">AR processing fee waived ($0)</div>
           <div class="option-row">Unlimited eligible state filings</div>
@@ -393,7 +393,7 @@
   <!-- IMPACTED PROCESSES -->
   <div class="section">
     <div class="section-title">Cancellation &amp; Refund Process</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">When a customer with an SFB subscription requests cancellation of their Annual Report, a pop-up will appear in the system. You must confirm which option the customer wants before proceeding.</p>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:18px; font-weight: 600;">When a customer with an SFB subscription requests cancellation of their Annual Report, a pop-up will appear in the system. You must confirm which option the customer wants before proceeding.</p>
 <img src="https://raw.githubusercontent.com/rp-bizeeknowledge/Assets/main/AR%20C%26R%20Confirmation.png" alt="Cancellation options popup screenshot" style="width:60%;border:3px solid var(--border);border-radius:var(--radius);margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;">
     <div class="steps">
 
@@ -409,8 +409,8 @@
           <ul>
             <li>Before presenting this option, confirm customer eligibility by checking <strong>both cancellation policies</strong>.</li>
             <div style="display:flex;gap:8px;margin:10px 0;justify-content:center;">
-              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">AR C&amp;R Guidelines</a>
-              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JXBE62HP29YR23WVH0X34:~:text=and%20click%20Refund.-,State%20Filings%20Bundle,-Rules" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">SFB C&amp;R Guidelines</a>
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:36px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;text-align: center; min-width: 28%;">Annual Report<br>C&amp;R Guidelines</a>
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JXBE62HP29YR23WVH0X34:~:text=and%20click%20Refund.-,State%20Filings%20Bundle,-Rules" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:7px 12px;border-radius:36px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;text-align: center; min-width: 28%;">State Filings Bundle<br>C&amp;R Guidelines</a>
             </div>
             <li>Customers may have placed additional state filing orders using the waived processing fee this makes them <strong>ineligible for an SFB refund</strong>.</li>
           </ul>
@@ -428,7 +428,7 @@
           <p>Keeps the SFB subscription active and <strong>cancels only the AR filing</strong>. Refunds the State Fee exclusively.</p>
           <ul>
             <li>Confirm eligibility by reviewing the <strong>Annual Report cancellation policy</strong></li><div style="display:flex;gap:8px;margin:10px 0;justify-content:center;">
-              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;">AR C&amp;R Guidelines</a>
+              <a href="https://incfile.zendesk.com/hc/en-us/articles/44089875025179--Cancel-Refund-Guidelines#h_01KC2JZ5D7PYMN54H9M0K0MYR7:~:text=Miscellaneous%20Product%20Orders-,Annual%20Reports,-%7C%20Amendment%20%7C%20Change%20of" target="_blank" style="display:inline-block;font-size:12px;font-weight:600;padding:6px 12px;border-radius:36px;background:var(--orange-light);border:1px solid var(--orange-mid);color:var(--orange);text-decoration:none;text-align: center; min-width: 28%;">Annual Report<br> C&amp;R Guidelines</a>
               
           </ul>
           <div class="callout callout-warn">
@@ -451,12 +451,11 @@
       </div>
       <div class="tip">
         <div class="tip-num">2</div>
-        <p><strong>Lead with value, not price.</strong> Use the interaction as an opportunity to highlight the State Filings Bundle unlimited filing fees waived for all supported filings within the year.</p>
+        <p>Disclaim that covered filings are subject to state availability. (Check the <strong>Resource Guide</strong> before confirming a service is included in the SFB.</p>
       </div>
       <div class="tip">
         <div class="tip-num">3</div>
-        <p>Always check the <strong>Resource Guide</strong> to confirm product availability before quoting what is covered by the SFB.</p>
-      </div>
+<p><strong>Lead with value, not price.</strong> Use the interaction as an opportunity to highlight the State Filings Bundle unlimited filing fees waived for all supported filings within the year.</p>      </div>
     </div>
   </div>
 

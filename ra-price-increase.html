@@ -12,8 +12,8 @@
     --orange-light: #FDF1ED;
     --orange-mid: #F4C4B0;
     --dark: #1A1A1A;
-    --mid: #4A4A4A;
-    --muted: #888;
+    --mid: #222222;
+    --muted: #4A4A4A;
     --border: #E8E4E0;
     --bg: #F7F5F3;
     --white: #FFFFFF;
@@ -28,7 +28,7 @@
     --radius: 10px;
     --radius-sm: 6px;
   }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; font-size: 15px; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; font-size: 15px; font-weight: 500; }
   .page { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
 
   /* HERO */
@@ -38,7 +38,7 @@
   .hero-label { display: inline-block; background: var(--orange); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 16px; }
   .hero h1 { font-size: 30px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 10px; }
   .hero h1 span { color: var(--orange); }
-  .hero-sub { font-size: 13px; color: rgba(255,255,255,.45); font-family: 'DM Mono', monospace; }
+  .hero-sub { font-size: 14px; color: rgba(255, 255, 255, 0.838); font-family: 'DM Mono', monospace; }
 
   /* PRICE HIGHLIGHT */
   .price-change {
@@ -73,16 +73,17 @@
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
   @media (max-width: 560px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
   .comp-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 12px; text-align: center; }
-  .comp-card.bizee { border-color: var(--orange); background: var(--orange-light); }
+  .comp-card.bizee { border-color: var(--orange); background: linear-gradient(135deg, #E8572A, #c94020); }
   .comp-name { font-size: 11px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
-  .comp-card.bizee .comp-name { color: var(--orange); }
+  .comp-card.bizee .comp-name { color: rgba(255,255,255,.75); }
   .comp-price { font-size: 20px; font-weight: 700; color: var(--dark); }
-  .comp-card.bizee .comp-price { color: var(--orange); }
+  .comp-card.bizee .comp-price { color: #fff; }
   .comp-yr { font-size: 11px; color: var(--muted); }
-  .comp-badge { display: inline-block; background: var(--green-light); color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 5px; }
+  .comp-card.bizee .comp-yr { color: rgba(255,255,255,.6); }
+  .comp-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 5px; }
 
   .context-note { display: flex; flex-direction: column; gap: 8px; }
-  .context-note-item { display: flex; align-items: flex-start; gap: 12px; padding: 9px 14px; background: var(--orange-light); border: 1px solid var(--orange-mid); border-radius: var(--radius-sm); font-size: 13px; color: var(--mid); line-height: 1.55; }
+  .context-note-item { display: flex; align-items: flex-start; gap: 12px; padding: 9px 14px; background: var(--orange-light); border: 1px solid var(--orange-mid); border-radius: var(--radius-sm); font-size: 14px; color: var(--mid); line-height: 1.55; }
   .context-note-item::before { content: ''; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
   .context-note-item strong { color: var(--dark); font-weight: 600; }
 
@@ -91,24 +92,24 @@
   @media (max-width: 560px) { .value-grid { grid-template-columns: 1fr; } }
   .value-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
   .value-icon { display: inline-flex; justify-content: center; width: 100%; font-size: 40px; margin-bottom: 8px; }
-  .value-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-  .value-body { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
+  .value-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; text-align: center; }
+  .value-body { font-size: 14px; color: var(--mid); line-height: 1.55; text-align: center; }
 
   /* CALL FLOW STEPS */
   .flow-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
   .flow-step { display: flex; gap: 12px; align-items: center; padding: 14px 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); }
-  .flow-num { width: 30px; height: 30px; background: var(--dark); color: #fff; font-size: 13px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .flow-content h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-  .flow-content p { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
+  .flow-num { width: 30px; height: 30px; background: var(--dark); color: #fff; font-size: 14px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .flow-content h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .flow-content p { font-size: 14px; color: var(--mid); line-height: 1.55; }
   .flow-content strong { color: var(--dark); font-weight: 600; }
 
   /* BRIDGE OFFER */
   .bridge-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
   .bridge-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
   .bridge-title { font-size: 18px; font-weight: 700; color: var(--dark); }
-  .bridge-price-pill { background: var(--orange-light); border: 1px solid var(--orange-mid); color: var(--orange); font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+  .bridge-price-pill { background: var(--orange-light); border: 1px solid var(--orange-mid); color: var(--orange); font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
   .bridge-rules { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
-  .bridge-rule { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--mid); line-height: 1.55; }
+  .bridge-rule { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--mid); line-height: 1.55; }
   .bridge-rule-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
   .bridge-rule strong { color: var(--dark); font-weight: 600; }
 
@@ -121,22 +122,22 @@
   /* QUOTE BOX */
   .quote-box { background: var(--bg); border-left: 3px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 16px; margin: 14px 0; }
   .quote-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
-  .quote-text { font-size: 13.5px; color: var(--dark); font-style: italic; line-height: 1.6; }
+  .quote-text { font-size: 15px; color: var(--dark); font-style: italic; line-height: 1.6; }
 
   /* CALLOUT */
-  .callout { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid; margin-top: 12px; font-size: 12.5px; line-height: 1.55; }
+  .callout { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid; margin-top: 12px; font-size: 14px; line-height: 1.55; }
   .callout-warn { background: var(--amber-light); border-color: #FCD34D; color: var(--amber); }
   .callout-info { background: var(--blue-light); border-color: #BFDBFE; color: var(--blue); }
   .callout-icon { flex-shrink: 0; margin-top: 1px; }
 
   /* AVOID LIST */
   .avoid-list { display: flex; flex-direction: column; gap: 6px; margin-left: 50Px; }
-  .avoid-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mid); padding: 10px 14px; background: var(--red-light); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .avoid-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--mid); padding: 10px 14px; background: var(--red-light); border: 1px solid var(--border); border-radius: var(--radius-sm); }
   .avoid-x { color: var(--red); font-weight: 700; font-size: 15px; flex-shrink: 0; }
 
   /* FOOTER */
   .footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-  .footer-logo { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: .02em; }
+  .footer-logo { font-size: 14px; font-weight: 700; color: var(--orange); letter-spacing: .02em; }
   .footer-meta { font-size: 12px; color: var(--muted); }
 </style>
 </head>
@@ -147,7 +148,7 @@
   <div class="hero">
     <div class="hero-label">UPDATE</div>
     <h1>Registered Agent<br><span>Price Increase</span></h1>
-    <div class="hero-sub">Effective Date: May 11, 2026 <br>New yearly renewal fee</div>
+    <div class="hero-sub">Planned Effective Date: May 11, 2026 <br>New yearly renewal fee</div>
   </div>
 
   <!-- PRICE CHANGE CALLOUT -->
@@ -180,28 +181,28 @@
       </div>
     </div>
     <div class="context-note">
-      <div class="context-note-item">At $149/yr, Bizee remains <strong>25–40% below major competitors.</strong> Even with the increase, we lead on value.</div>
-      <div class="context-note-item">Position this as the best value. Avoid words like <strong>"cheapest"</strong> or <strong>"lowest"</strong> as they imply poor quality.</div>
+      <div class="context-note-item"><span>At $149/yr, Bizee remains <strong>25 - 40% below major competitors.</strong> Even with the increase, we lead on value.</span></div>
+      <div class="context-note-item"><span>Position this as the best value. Avoid words like <strong>"cheapest"</strong> or <strong>"lowest"</strong> as they imply poor quality.</span></div>
     </div>
   </div>
 
   <!-- VALUE PILLARS -->
   <div class="section">
-    <div class="section-title">Lead with Value: Educate on  What the RA Actually Does</div>
+    <div class="section-title">Lead with <span style="text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor, 0 0.5px 0 currentColor, 0 -0.5px 0 currentColor; -webkit-text-stroke: 0.6px currentColor;">Value</span>: Educate on  What the RA Actually Does</div>
     <div class="value-grid">
       <div class="value-card">
         <div class="value-icon">🔒</div>
-        <div class="value-title">Privacy</div>
+        <div class="value-title" style="text-align: center; font-size: larger;">Privacy</div>
         <div class="value-body">Bizee's address appears on public state records, not the customer's home address. Keeps them off data broker databases that scrape state filings.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">🛡️</div>
-        <div class="value-title">Protection</div>
+        <div class="value-title" style="text-align: center; font-size: larger;">Protection</div>
         <div class="value-body">Bizee receives legal documents and state correspondence, scans them, and uploads to the dashboard. A missed legal notice can result in a default judgment.</div>
       </div>
       <div class="value-card">
         <div class="value-icon">✅</div>
-        <div class="value-title">Ease</div>
+        <div class="value-title" style="text-align: center; font-size: larger;">Ease</div>
         <div class="value-body">Being your own RA requires being physically available at a street address every business day, all year. Bizee handles this with staffed offices in all 50 states.</div>
       </div>
     </div>
@@ -214,21 +215,21 @@
       <div class="flow-step">
         <div class="flow-num">1</div>
         <div class="flow-content">
-          <h3>Listen first</h3>
+          <h3>Listen</h3>
           <p>Use active listening to clearly understand the customer's concern before offering any resolution. <strong>Thank them for being a Bizee customer.</strong> Recognize their concern. Don't rush past it.</p>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">2</div>
         <div class="flow-content">
-          <h3>Acknowledge, then pivot</h3>
-          <p>Open with one sentence: <strong>"We've updated our pricing to reflect better what's covered under your registered agent service."</strong> Then pivot to value. Don't apologize. Don't list reasons. 
+          <h3>Acknowledge</h3>
+          <p>Open with one sentence: <strong>"We've updated our pricing to reflect better what's covered under your registered agent service."</strong> Then shift focus to value. Don't apologize. Don't list reasons. 
           </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">3</div>
         <div class="flow-content">
-          <h3>Lead with value, not price</h3>
+          <h3>Value</h3>
           <p>Use the moment to walk through what RA actually covers. Let the value speak before any numbers come up.</p>
         </div>
       </div>
@@ -237,13 +238,13 @@
     <div class="avoid-list">
       <div class="avoid-item"><span class="avoid-x">✕</span> Don't apologize for the price increase</div>
       <div class="avoid-item"><span class="avoid-x">✕</span> Don't say "cheapest" or "lowest price"</div>
-      <div class="avoid-item"><span class="avoid-x">✕</span> Don't volunteer the bridge offer as the opener</div>
+      <div class="avoid-item"><span class="avoid-x">✕</span> Don't volunteer remediation offer from the start</div>
     </div>
   </div>
 
   <!-- BRIDGE OFFER -->
   <div class="section">
-    <div class="section-title">Bridge Offer</div>
+    <div class="section-title">Remediation Offer</div>
     <div class="bridge-card">
       <div class="bridge-header">
         <div class="bridge-title">$119 Rate Extension 1 Additional Year</div>
@@ -264,7 +265,7 @@
 
       <div class="quote-label">Suggested verbiage</div>
       <div class="quote-box">
-        <div class="quote-text">"I understand this is a change, and I want to make it easier. I'd like to offer you one more year at your current rate of $119."</div>
+        <div class="quote-text">"I hear you, and I want to make this easier. I'd like to lock in your current $119 rate for one more year. After that, your renewal will move to the new rate of $149. Can I go ahead and extend the $119 rate for you?"</div>
       </div>
 
       
